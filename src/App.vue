@@ -1,26 +1,38 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <the-header></the-header>
+  <main class="container">
+    <div class="has-text-centered" v-if="loading">
+      <base-spinner></base-spinner>
+    </div>
+    <router-view v-else></router-view>
+  </main>
+  <the-footer></the-footer>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import TheFooter from "./components/TheFooter";
+import TheHeader from './components/TheHeader.vue';
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  components: { TheFooter, TheHeader },
+};
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style lang="scss">
+body {
+  position: relative;
+}
+
+main {
+  h2 {
+    font-size: 2rem;
+    margin-bottom: .5rem;
+  }
+
+  ul {
+    list-style-type: disc;
+    padding-left: 2rem;
+    margin: 1rem 0;
+  }
 }
 </style>
