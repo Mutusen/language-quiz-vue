@@ -4,7 +4,7 @@
 <ul>
     <li>I’m interested in languages – I have <a href="https://www.apprenti-polyglotte.net/" target="_blank">a website</a> where I talk about it (in French).</li>
     <li>I’ve done a few musical language quizzes during Esperanto events. I found this fun and people enjoyed it, so I thought an online version would be cool.</li>
-    <li>I’ve been learning how to use <a href="https://www.djangoproject.com/" target="_blank">Django</a> and I wanted a project to put my knowledge into practice.</li>
+    <li>I’ve been learning how to use <a href="https://www.djangoproject.com/" target="_blank">Django</a> and <a href="https://v3.vuejs.org/" target="_blank">Vue.js</a> and I wanted a project to put my knowledge into practice.</li>
 </ul>
 <p>I was inspired by the following websites:</p>
 <ul>

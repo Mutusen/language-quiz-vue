@@ -6,6 +6,7 @@
         'is-success': correctlyAnswered,
         'is-danger': !correctlyAnswered,
       }"
+      ref="card"
       v-if="hasAnswered"
     >
       <h4 v-if="correctlyAnswered">Correct!</h4>
@@ -43,6 +44,9 @@ export default {
     next() {
       this.$emit("next");
     },
+    scroll() {
+      setTimeout(() => this.$refs.card.scrollIntoView({behavior: 'smooth'}), 210); // Wait until end of transition
+    }
   },
 };
 </script>

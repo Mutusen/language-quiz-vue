@@ -34,6 +34,7 @@
           </label>
         </div>
       </div>
+      <p v-if="gameModeSong">Try to answer without looking at the video!</p>
 
       <div class="control has-text-centered mt-5">
         <button class="button is-link is-medium">Start playing</button>
@@ -71,6 +72,7 @@
       :correctAnswer="currentQuestion.correctAnswer"
       :hasAnswered="hasAnswered"
       :errorReportButton="gameModeSong"
+      :autoScroll="gameModeSong"
       @answer-picked="checkAnswer($event)"
       @error-reported="reportError()"
     >
@@ -83,6 +85,7 @@
       :chosenAnswerName="chosenAnswerName"
       :correctAnswerName="correctAnswerName"
       @next="nextRound"
+      ref="results"
     ></results-card>
   </section>
   <section v-else>
@@ -205,6 +208,7 @@ export default {
       if (this.correctlyAnswered) {
         this.score++;
       }
+      this.$refs.results.scroll();
 
       // Inform the API that the text/song has been played, to update states
       const url =

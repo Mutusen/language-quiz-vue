@@ -1,7 +1,7 @@
 <template>
   <base-card>
     <template #default>
-      <h3>Question {{ currentRound }} of {{ numberOfQuestions }}</h3>
+      <h3 ref="question">Question {{ currentRound }} of {{ numberOfQuestions }}</h3>
       <div
         class="text-sample"
         :lang="currentQuestion.correctAnswer"
@@ -36,6 +36,9 @@ export default {
     "hasAnswered",
     "currentQuestion",
   ],
+  mounted() {
+    this.$refs.question.scrollIntoView({behavior: 'smooth'});
+  }
 };
 </script>
 

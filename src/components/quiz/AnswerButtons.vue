@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div ref="div">
     <button
       class="button is-info is-medium"
       v-for="(name, code) in choices"
@@ -63,6 +63,11 @@ export default {
       required: false,
       default: false,
     },
+    autoScroll: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
   },
   data() {
     return {
@@ -85,5 +90,10 @@ export default {
       this.$emit("error-reported", answer);
     },
   },
+  mounted() {
+    if (this.autoScroll) {
+      this.$refs.div.scrollIntoView({behavior: 'smooth'});
+    }
+  }
 };
 </script>

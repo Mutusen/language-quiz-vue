@@ -1,7 +1,7 @@
 <template>
   <base-card mode="narrow">
     <h3>Play with {{ type }}s</h3>
-    <div class="score">Your score: {{ score }}/{{ numberOfQuestions }}</div>
+    <div class="score" ref="score">Your score: {{ score }}/{{ numberOfQuestions }}</div>
     <div class="has-text-centered mt-5">
       <button class="button is-link is-medium mr-4" @click="playAgain">
         Play again
@@ -20,6 +20,9 @@ export default {
     playAgain() {
       this.$emit('play-again');
     }
+  },
+  mounted() {
+    this.$refs.score.scrollIntoView({behavior: 'smooth'});
   }
 }
 </script>
