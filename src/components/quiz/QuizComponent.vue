@@ -34,14 +34,6 @@
           </label>
         </div>
       </div>
-      <div class="field" v-if="gameModeSong">
-        <div class="control">
-          <label class="checkbox">
-            <input type="checkbox" v-model="hideVideo" />
-            Hide the video to make things harder
-          </label>
-        </div>
-      </div>
 
       <div class="control has-text-centered mt-5">
         <button class="button is-link is-medium">Start playing</button>
@@ -137,12 +129,11 @@ export default {
       gameStarted: false,
 
       // Options
-      numbersOfQuestions: [2, 10, 20, 30, 40],
+      numbersOfQuestions: [10, 20, 30, 40],
       numbersOfPossibleAnswers: [4, 6, 8, 10],
-      numberOfQuestions: 2,
+      numberOfQuestions: 10,
       numberOfPossibleAnswers: 4,
       difficult: false,
-      hideVideo: false,
 
       // Current game
       pastQuestionsIds: [],

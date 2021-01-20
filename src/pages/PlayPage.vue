@@ -1,6 +1,6 @@
 <template>
   <quiz-component
-    :type="type"
+    :type="$route.name"
     ref="quizComponent">
   </quiz-component>
 </template>
@@ -9,10 +9,9 @@
 import QuizComponent from "../components/quiz/QuizComponent";
 
 export default {
-  props: ['type'],
   components: { QuizComponent },
   beforeRouteLeave(_to, _from) {
     return this.$refs.quizComponent.prepareToExit();
-  }
+  },
 };
 </script>

@@ -1,7 +1,7 @@
 <template>
   <transition name="answer">
     <div
-      class="notification mt-5"
+      class="notification mt-5 mb-5"
       :class="{
         'is-success': correctlyAnswered,
         'is-danger': !correctlyAnswered,

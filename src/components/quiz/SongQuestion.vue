@@ -3,17 +3,6 @@
     <template #default>
       <h3>Question {{ currentRound }} of {{ numberOfQuestions }}</h3>
       <figure class="image is-16by9">
-        <transition name="fade">
-          <div
-            v-if="hideVideo && !hasAnswered && !reveal"
-            id="hide-video"
-            class="is-flex is-justify-content-center is-align-items-center"
-          >
-            <button class="button is-success is-medium" @click="revealVideo">
-              Show the video
-            </button>
-          </div>
-        </transition>
         <iframe
           id="ytplayer"
           type="text/html"
@@ -47,7 +36,6 @@ export default {
     "numberOfQuestions",
     "hasAnswered",
     "currentQuestion",
-    "hideVideo",
   ],
   data() {
     return {
@@ -86,21 +74,6 @@ figure {
 figure:hover #hide-video {
   height: 89%;
   padding-top: 6.9%;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-
-.fade-enter-to,
-.fade-leave-from {
-  opacity: 1;
-}
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: all 200ms;
 }
 
 @media only screen and (max-width: 1200px) {

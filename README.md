@@ -1,6 +1,6 @@
-# languagequiz
+# Language quiz (front end)
 
-This is the front end of a language quiz; the back end is made with Django (the project will be added to another Github repository soon).
+This is the front end of a language quiz made with Vue.js 3. The back end is made with Django (the project will be added to another Github repository soon).
 
 The quiz will soon be demonstrated [here](https://quiz.apprenti-polyglotte.net/) (this is currently an old version with jQuery).
 

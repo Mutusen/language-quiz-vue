@@ -25,15 +25,11 @@ const routes = [
         path: "/text",
         name: "text",
         component: PlayPage,
-        props: true,
-        params: {type: 'text'}
     },
     {
         path: "/song",
         name: "song",
         component: PlayPage,
-        props: true,
-        params: {type: 'song'}
     },
 ];
 
