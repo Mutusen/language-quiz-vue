@@ -20,7 +20,7 @@
         :disabled="disabled"
         :class="{'is-loading': error}"
       >
-        The video doesn’t work
+        {{ $t('game.brokenVideo') }}
       </button>
     </div>
   </div>

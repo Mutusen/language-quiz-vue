@@ -1,8 +1,12 @@
 <template>
   <footer class="container">
-    Website by <a href="https://www.apprenti-polyglotte.net/" lang="fr" target="_blank">Apprenti Polyglotte</a> ⋅
-    <router-link :to="{ name: 'about' }">About</router-link> ⋅
-    <router-link :to="{ name: 'contact' }">Contact</router-link>
+    <i18n-t keypath="websiteBy">
+      <template v-slot:link>
+        <a href="https://www.apprenti-polyglotte.net/" lang="fr" target="_blank">Apprenti Polyglotte</a>
+      </template>
+    </i18n-t> ⋅
+    <router-link :to="{ name: 'about' }">{{ $t('about.shortTitle') }}</router-link> ⋅
+    <router-link :to="{ name: 'contact' }">{{ $t('contact.title') }}</router-link>
   </footer>
 </template>
 

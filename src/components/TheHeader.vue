@@ -1,11 +1,21 @@
 <template>
   <header class="container">
-    <h1><router-link :to="{ name: 'home' }">Language quiz</router-link></h1>
+    <div class="columns is-mobile">
+      <div class="column is-three-fifths">
+        <h1><router-link :to="{ name: 'home' }">{{ $t('languagequiz') }}</router-link></h1>
+      </div>
+      <div class="column has-text-right">
+        <language-menu></language-menu>
+      </div>
+    </div>
   </header>
 </template>
 
 <script>
+import LanguageMenu from './LanguageMenu.vue'
+
 export default {
+  components: { LanguageMenu },
 }
 </script>
 

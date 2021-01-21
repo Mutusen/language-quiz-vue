@@ -9,20 +9,20 @@
       ref="card"
       v-if="hasAnswered"
     >
-      <h4 v-if="correctlyAnswered">Correct!</h4>
-      <h4 v-else>Wrong!</h4>
-      <p>Your answer: {{ chosenAnswerName }}.</p>
-      <p>Correct answer: {{ correctAnswerName }}.</p>
+      <h4 v-if="correctlyAnswered">{{ $t('game.correct') }}</h4>
+      <h4 v-else>{{ $t('game.wrong') }}</h4>
+      <p>{{ $t('game.yourAnswer') }} {{ chosenAnswerName }}.</p>
+      <p>{{ $t('game.rightAnswer') }} {{ correctAnswerName }}.</p>
       <p class="info">
         <a :href="wikiLink(correctAnswer)" target="_blank"
-          >More information about this language on Wikipedia</a
+          >{{ $t('game.wikipedia') }}</a
         >
       </p>
     </div>
   </transition>
   <transition name="button" @click="next">
     <div class="has-text-centered" v-if="hasAnswered">
-      <button class="button is-link is-medium">Next</button>
+      <button class="button is-link is-medium">{{ $t('game.next') }}</button>
     </div>
   </transition>
 </template>

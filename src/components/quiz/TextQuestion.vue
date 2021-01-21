@@ -1,7 +1,14 @@
 <template>
   <base-card>
     <template #default>
-      <h3 ref="question">Question {{ currentRound }} of {{ numberOfQuestions }}</h3>
+      <h3 ref="question">
+        {{
+          $t("game.currentQuestion", {
+            num: currentRound,
+            total: numberOfQuestions,
+          })
+        }}
+      </h3>
       <div
         class="text-sample"
         :lang="currentQuestion.correctAnswer"
@@ -12,14 +19,14 @@
     </template>
     <template #footer>
       <p>
-        Source:
+        {{ $t("game.source") }}
         <a v-if="hasAnswered" :href="currentQuestion.source" target="_blank">{{
           currentQuestion.source
         }}</a>
-        <span v-else>(pick an answer first)</span>
+        <span v-else>{{ $t("game.pickAnswer") }}</span>
       </p>
       <p v-if="currentQuestion.license">
-        License:
+        {{ $t('game.license') }}
         <a :href="currentQuestion.license.url" target="_blank">{{
           currentQuestion.license.name
         }}</a>
@@ -37,8 +44,8 @@ export default {
     "currentQuestion",
   ],
   mounted() {
-    this.$refs.question.scrollIntoView({behavior: 'smooth'});
-  }
+    this.$refs.question.scrollIntoView({ behavior: "smooth" });
+  },
 };
 </script>
 
@@ -51,5 +58,11 @@ export default {
   border-radius: 6px;
   box-shadow: 0 0.2em 0.4em -0.06em rgba(10, 10, 10, 0.06);
   margin: 1.5rem 0;
+}
+
+@media only screen and (max-width: 600px) {
+  .text-sample {
+    font-size: 1.2rem;
+  }
 }
 </style>

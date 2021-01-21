@@ -1,7 +1,7 @@
 <template>
   <base-card mode="video">
     <template #default>
-      <h3>Question {{ currentRound }} of {{ numberOfQuestions }}</h3>
+      <h3>{{ $t('game.currentQuestion', {num: currentRound, total: numberOfQuestions}) }}</h3>
       <figure class="image is-16by9">
         <iframe
           id="ytplayer"
@@ -18,11 +18,11 @@
     <template #footer v-if="hasAnswered">
       <div class="columns is-flex is-align-items-center">
         <div class="column">
-          <p>Title: <span :lang="currentQuestion.correctAnswer">{{ currentQuestion.title }}</span></p>
-          <p>Artist: <span :lang="currentQuestion.correctAnswer">{{ currentQuestion.artist }}</span></p>
+          <p>{{ $t('game.title') }} <span :lang="currentQuestion.correctAnswer">{{ currentQuestion.title }}</span></p>
+          <p>{{ $t('game.artist') }} <span :lang="currentQuestion.correctAnswer">{{ currentQuestion.artist }}</span></p>
         </div>
         <div class="column has-text-right">
-          <a :href="currentQuestion.youtube_url" target="_blank" class="button is-info">Watch on YouTube</a>
+          <a :href="currentQuestion.youtube_url" target="_blank" class="button is-info">{{ $t('game.watchYouTube') }}</a>
         </div>
       </div>
     </template>

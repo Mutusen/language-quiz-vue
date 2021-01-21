@@ -1,13 +1,14 @@
 <template>
   <base-card mode="narrow">
-    <h3>Play with {{ type }}s</h3>
-    <div class="score" ref="score">Your score: {{ score }}/{{ numberOfQuestions }}</div>
+    <h3 v-if="gameModeText">{{ $t('main.playTexts') }}</h3>
+    <h3 v-else>{{ $t('main.playSongs') }}</h3>
+    <div class="score" ref="score">{{ $t('game.yourScore') }} {{ score }}/{{ numberOfQuestions }}</div>
     <div class="has-text-centered mt-5">
       <button class="button is-link is-medium mr-4" @click="playAgain">
-        Play again
+        {{ $t('game.playAgain') }}
       </button>
       <router-link :to="{ name: 'home' }" class="button is-link is-medium"
-        >Main page</router-link
+        >{{ $t('game.mainPage') }}</router-link
       >
     </div>
   </base-card>
@@ -15,7 +16,7 @@
 
 <script>
 export default {
-  props: ['score', 'numberOfQuestions', 'type'],
+  props: ['score', 'numberOfQuestions', 'gameModeText'],
   methods: {
     playAgain() {
       this.$emit('play-again');

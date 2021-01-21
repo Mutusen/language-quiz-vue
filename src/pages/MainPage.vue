@@ -5,32 +5,34 @@
   <div class="columns" v-else>
     <div class="column">
       <base-card>
-        <h3>Play with texts</h3>
+        <h3>{{ $t('main.playTexts') }}</h3>
         <p>
-          Guess the language of texts! There are {{ countData.texts }} texts in
-          {{ countData.text_languages }} languages.
+          {{ $tc('main.guessTexts', countData.texts, { num: countData.texts, 'in_n_languages': 
+            $tc('main.inNLanguages', countData.text_languages, { num: countData.text_languages })
+          }) }}
         </p>
         <p class="has-text-centered">
           <router-link
             :to="{ name: 'text' }"
             class="button is-medium is-primary"
-            >Play</router-link
+            >{{ $t('main.play') }}</router-link
           >
         </p>
       </base-card>
     </div>
     <div class="column">
       <base-card>
-        <h3>Play with songs</h3>
+        <h3>{{ $t('main.playSongs') }}</h3>
         <p>
-          Guess the language of songs! There are {{ countData.songs }} songs in
-          {{ countData.song_languages }} languages.
+          {{ $tc('main.guessSongs', countData.songs, { num: countData.songs, 'in_n_languages': 
+            $tc('main.inNLanguages', countData.song_languages, { num: countData.song_languages })
+          }) }}
         </p>
         <p class="has-text-centered">
           <router-link
             :to="{ name: 'song' }"
             class="button is-medium is-primary"
-            >Play</router-link
+            >{{ $t('main.play') }}</router-link
           >
         </p>
       </base-card>

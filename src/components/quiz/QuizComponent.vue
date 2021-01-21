@@ -1,9 +1,10 @@
 <template>
   <base-card mode="narrow" v-if="!gameStarted">
-    <h3>Play with {{ type }}s</h3>
+    <h3 v-if="gameModeText">{{ $t('main.playTexts') }}</h3>
+    <h3 v-else>{{ $t('main.playSongs') }}</h3>
     <form @submit.prevent="startGame">
       <div class="field">
-        <label class="label">Number of questions</label>
+        <label class="label">{{ $t('game.numberQuestions') }}</label>
         <div class="control">
           <div class="select">
             <select v-model="numberOfQuestions">
@@ -15,7 +16,7 @@
         </div>
       </div>
       <div class="field">
-        <label class="label">Number of possible answers</label>
+        <label class="label">{{ $t('game.numberAnswers') }}</label>
         <div class="control">
           <div class="select">
             <select v-model="numberOfPossibleAnswers">
@@ -30,20 +31,20 @@
         <div class="control">
           <label class="checkbox">
             <input type="checkbox" v-model="difficult" />
-            Difficult language choices
+            {{ $t('game.difficult') }}
           </label>
         </div>
       </div>
-      <p v-if="gameModeSong">Try to answer without looking at the video!</p>
+      <p v-if="gameModeSong">{{ $t('game.dontLook') }}</p>
 
       <div class="control has-text-centered mt-5">
-        <button class="button is-link is-medium">Start playing</button>
+        <button class="button is-link is-medium">{{ $t('game.start') }}</button>
       </div>
     </form>
   </base-card>
   <section v-else-if="isLoading">
     <base-card :mode="{ video: gameModeSong }">
-      <h3>Question {{ currentRound }} of {{ numberOfQuestions }}</h3>
+      <h3>{{ $t('game.currentQuestion', {num: currentRound, total: numberOfQuestions}) }}</h3>
       <div class="has-text-centered">
         <base-spinner></base-spinner>
       </div>
@@ -90,7 +91,7 @@
   </section>
   <section v-else>
     <score-card
-      :type="type"
+      :gameModeText="gameModeText"
       :score="score"
       :numberOfQuestions="numberOfQuestions"
       @play-again="playAgain"
@@ -104,7 +105,7 @@
     @close="hideError"
     :timeout="6"
   >
-    Thank you, the broken video has been reported.
+    {{ $t('game.reportSent') }}
   </pinned-message>
 </template>
 
