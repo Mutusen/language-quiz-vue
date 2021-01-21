@@ -11,8 +11,8 @@
     >
       <h4 v-if="correctlyAnswered">{{ $t('game.correct') }}</h4>
       <h4 v-else>{{ $t('game.wrong') }}</h4>
-      <p>{{ $t('game.yourAnswer') }} {{ chosenAnswerName }}.</p>
-      <p>{{ $t('game.rightAnswer') }} {{ correctAnswerName }}.</p>
+      <p>{{ $t('game.yourAnswer') }} {{ $t('languages.' + chosenAnswer) }}.</p>
+      <p>{{ $t('game.rightAnswer') }} {{ $t('languages.' + correctAnswer) }}.</p>
       <p class="info">
         <a :href="wikiLink(correctAnswer)" target="_blank"
           >{{ $t('game.wikipedia') }}</a
@@ -34,8 +34,7 @@ export default {
     "hasAnswered",
     "correctAnswer",
     "correctlyAnswered",
-    "correctAnswerName",
-    "chosenAnswerName",
+    "chosenAnswer",
   ],
   methods: {
     wikiLink(code) {

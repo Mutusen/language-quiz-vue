@@ -83,8 +83,7 @@
       :hasAnswered="hasAnswered"
       :correctAnswer="currentQuestion.correctAnswer"
       :correctlyAnswered="correctlyAnswered"
-      :chosenAnswerName="chosenAnswerName"
-      :correctAnswerName="correctAnswerName"
+      :chosenAnswer="chosenAnswer"
       @next="nextRound"
       ref="results"
     ></results-card>
@@ -160,12 +159,6 @@ export default {
     },
     correctlyAnswered() {
       return this.chosenAnswer === this.currentQuestion.correctAnswer;
-    },
-    chosenAnswerName() {
-      return this.currentQuestion.choices[this.chosenAnswer];
-    },
-    correctAnswerName() {
-      return this.currentQuestion.choices[this.currentQuestion.correctAnswer];
     },
     gameEnded() {
       return this.currentRound > this.numberOfQuestions;

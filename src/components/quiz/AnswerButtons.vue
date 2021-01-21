@@ -2,7 +2,7 @@
   <div ref="div">
     <button
       class="button is-info is-medium"
-      v-for="(name, code) in choices"
+      v-for="[code, name] in sortedChoices"
       :key="code"
       @click="pickAnswer(code)"
       :disabled="disabled"
@@ -18,9 +18,9 @@
       <button
         class="button is-danger is-small"
         :disabled="disabled"
-        :class="{'is-loading': error}"
+        :class="{ 'is-loading': error }"
       >
-        {{ $t('game.brokenVideo') }}
+        {{ $t("game.brokenVideo") }}
       </button>
     </div>
   </div>
@@ -78,7 +78,20 @@ export default {
   computed: {
     disabled() {
       return this.hasAnswered || this.error;
-    }
+    },
+    sortedChoices() {
+      const choicesWithName = [];
+      this.choices.forEach((e) => {
+        choicesWithName.push([
+          e,
+          this.$t("languages." + e),
+        ]);
+      });
+      choicesWithName.sort(function (a, b) {
+        return a[1] > b[1];
+      });
+      return choicesWithName;
+    },
   },
   methods: {
     pickAnswer(answer) {
@@ -92,8 +105,8 @@ export default {
   },
   mounted() {
     if (this.autoScroll) {
-      this.$refs.div.scrollIntoView({behavior: 'smooth'});
+      this.$refs.div.scrollIntoView({ behavior: "smooth" });
     }
-  }
+  },
 };
 </script>

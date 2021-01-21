@@ -23,6 +23,8 @@ export default {
     reasons2: 'I’ve done a few musical language quizzes during Esperanto events. I found this fun and people enjoyed it, so I thought an online version would be cool.',
     reasons3: 'I’ve been learning how to use {django} and {vuejs} and I wanted a project to put my knowledge into practice.',
     inspiration: 'I was inspired by the following websites:',
+    github: 'The code is available {on_github}.',
+    githubLink: 'on GitHub',
     support: 'Support me',
     supportText: 'If you like this project and want to support me, you can {paypal}:',
     supportTextPaypal: 'make a donation through PayPal',

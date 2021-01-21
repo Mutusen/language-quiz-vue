@@ -45,6 +45,18 @@
       >
     </li>
   </ul>
+
+  <i18n-t keypath="about.github" tag="p">
+    <template v-slot:on_github>
+      <a
+        href="https://github.com/Mutusen/language-quiz-vue"
+        target="_blank"
+        >{{ $t("about.githubLink") }}</a
+      >
+    </template>
+  </i18n-t>
+
+
   <h2>{{ $t("about.support") }}</h2>
   <i18n-t keypath="about.supportText" tag="p">
     <template v-slot:paypal>
