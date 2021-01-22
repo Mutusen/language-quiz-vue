@@ -18,9 +18,11 @@ export default {
   methods: {
     setLanguage() {
       localStorage.language = this.$i18n.locale;
+      document.documentElement.lang = this.$i18n.locale;
+      document.title = this.$t('languagequiz');
     }
   },
-  beforeCreate() {
+  created() {
     if (localStorage.language) {
       this.$i18n.locale = localStorage.language;
     }
@@ -44,9 +46,10 @@ export default {
 
       if (chosenLanguage !== null) {
         this.$i18n.locale = chosenLanguage;
-        localStorage.language = chosenLanguage;
       }
     }
+
+    this.setLanguage();
   },
 };
 </script>

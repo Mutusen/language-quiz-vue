@@ -38,7 +38,7 @@ export default {
   ],
   methods: {
     wikiLink(code) {
-      return `${this.API}/wikipedia/${code}/`;
+      return `${this.API}/wikipedia/${this.$i18n.locale}/${code}/`;
     },
     next() {
       this.$emit("next");

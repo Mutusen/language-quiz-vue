@@ -26,7 +26,8 @@ body {
 main {
   h2 {
     font-size: 2rem;
-    margin-bottom: .5rem;
+    margin-bottom: .4rem;
+    margin-top: .8rem;
   }
 
   ul {
