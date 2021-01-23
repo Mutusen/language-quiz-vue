@@ -1,7 +1,7 @@
 <template>
   <transition name="answer">
-    <div
-      class="notification mt-5 mb-5"
+    <section
+      class="message mt-5 mb-5"
       :class="{
         'is-success': correctlyAnswered,
         'is-danger': !correctlyAnswered,
@@ -9,16 +9,21 @@
       ref="card"
       v-if="hasAnswered"
     >
-      <h4 v-if="correctlyAnswered">{{ $t('game.correct') }}</h4>
-      <h4 v-else>{{ $t('game.wrong') }}</h4>
-      <p>{{ $t('game.yourAnswer') }} {{ $t('languages.' + chosenAnswer) }}.</p>
-      <p>{{ $t('game.rightAnswer') }} {{ $t('languages.' + correctAnswer) }}.</p>
-      <p class="info">
-        <a :href="wikiLink(correctAnswer)" target="_blank"
-          >{{ $t('game.wikipedia') }}</a
-        >
-      </p>
-    </div>
+      <header class="message-header">
+        <h4 v-if="correctlyAnswered">{{ $t('game.correct') }}</h4>
+        <h4 v-else>{{ $t('game.wrong') }}</h4>
+      </header>
+
+      <div class="message-body">
+        <p>{{ $t('game.yourAnswer') }} {{ $t('languages.' + chosenAnswer) }}.</p>
+        <p>{{ $t('game.rightAnswer') }} {{ $t('languages.' + correctAnswer) }}.</p>
+        <p class="info">
+          <a :href="wikiLink(correctAnswer)" target="_blank"
+            >{{ $t('game.wikipedia') }}</a
+          >
+        </p>
+      </div>
+    </section>
   </transition>
   <transition name="button" @click="next">
     <div class="has-text-centered" v-if="hasAnswered">
@@ -51,7 +56,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.notification {
+.message {
   max-width: 500px;
   margin: auto;
   font-size: 1.2rem;
@@ -60,8 +65,8 @@ export default {
 h4 {
   font-weight: bold;
   text-align: center;
-  font-size: 1.5rem;
-  margin-top: 0;
+  font-size: 1.35rem;
+  margin: 0;
 }
 
 .info {
@@ -71,7 +76,7 @@ h4 {
 
   a:hover,
   a:active {
-    text-decoration: none;
+    text-decoration: none !important;
   }
 }
 

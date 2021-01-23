@@ -15,13 +15,7 @@
 
 <script>
 export default {
-  methods: {
-    setLanguage() {
-      localStorage.language = this.$i18n.locale;
-      document.documentElement.lang = this.$i18n.locale;
-      document.title = this.$t('languagequiz');
-    }
-  },
+  inject: ['setLanguage'],
   created() {
     if (localStorage.language) {
       this.$i18n.locale = localStorage.language;

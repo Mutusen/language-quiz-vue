@@ -1,6 +1,7 @@
 export default {
   languagequiz: 'Language quiz',
   websiteBy: 'Website by {link}',
+  notFound: 'The page you requested cannot be found.',
   main: {
     play: 'Play',
     playTexts: 'Play with texts',

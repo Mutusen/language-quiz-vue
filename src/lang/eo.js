@@ -1,5 +1,6 @@
 export default {
   "languagequiz": "Lingva kvizo",
+  "notFound": "La paĝo, kiun vi petis, ne estis trovita.",
   "websiteBy": "Retejo de {link}",
   "about": {
     "github": "La kodo estas disponebla {on_github}.",

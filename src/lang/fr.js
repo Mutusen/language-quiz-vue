@@ -1,5 +1,6 @@
 export default {
   "languagequiz": "Quiz de langues",
+  "notFound": "La page demandée n’a pas pu être trouvée.",
   "websiteBy": "Un site d’{link}",
   "about": {
     "github": "Le code est disponible {on_github}.",
