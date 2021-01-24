@@ -87,8 +87,10 @@ export default {
           this.$t("languages." + e),
         ]);
       });
+      
+      const locale = this.$i18n.locale;
       choicesWithName.sort(function (a, b) {
-        return a[1] > b[1] ? 1 : -1;
+        return Intl.Collator(locale).compare(a[1], b[1])
       });
       return choicesWithName;
     },

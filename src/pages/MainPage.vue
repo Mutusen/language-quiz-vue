@@ -42,7 +42,6 @@
 
 <script>
 export default {
-  inject: ['setLanguage'],
   data() {
     return {
       isLoading: true,
@@ -64,7 +63,6 @@ export default {
     const languageFromUrl = this.$route.params.language;
     if (languageFromUrl && this.$i18n.availableLocales.includes(languageFromUrl)) {
       this.$i18n.locale = languageFromUrl;
-      this.setLanguage();
     }
     this.loadCountData();
   },

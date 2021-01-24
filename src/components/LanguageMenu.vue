@@ -1,6 +1,6 @@
 <template>
   <div class="select mt-4 mr-3">
-    <select v-model="$i18n.locale" @change="setLanguage">
+    <select v-model="$i18n.locale">
       <option
         v-for="locale in $i18n.availableLocales"
         :key="`locale-${locale}`"
@@ -15,7 +15,6 @@
 
 <script>
 export default {
-  inject: ['setLanguage'],
   created() {
     if (localStorage.language) {
       this.$i18n.locale = localStorage.language;
@@ -42,8 +41,6 @@ export default {
         this.$i18n.locale = chosenLanguage;
       }
     }
-
-    this.setLanguage();
   },
 };
 </script>
