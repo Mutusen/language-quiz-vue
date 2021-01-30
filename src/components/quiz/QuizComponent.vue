@@ -1,102 +1,104 @@
 <template>
-  <base-card mode="narrow" v-if="!gameStarted">
-    <h3 v-if="gameModeText">{{ $t('main.playTexts') }}</h3>
-    <h3 v-else>{{ $t('main.playSongs') }}</h3>
-    <form @submit.prevent="startGame">
-      <div class="field">
-        <label class="label">{{ $t('game.numberQuestions') }}</label>
-        <div class="control">
-          <div class="select">
-            <select v-model="numberOfQuestions">
-              <option v-for="num in numbersOfQuestions" :key="num">
-                {{ num }}
-              </option>
-            </select>
+  <transition name="slide" mode="out-in">
+    <base-card mode="narrow" v-if="!gameStarted">
+      <h3 v-if="gameModeText">{{ $t('main.playTexts') }}</h3>
+      <h3 v-else>{{ $t('main.playSongs') }}</h3>
+      <form @submit.prevent="startGame">
+        <div class="field">
+          <label class="label">{{ $t('game.numberQuestions') }}</label>
+          <div class="control">
+            <div class="select">
+              <select v-model="numberOfQuestions">
+                <option v-for="num in numbersOfQuestions" :key="num">
+                  {{ num }}
+                </option>
+              </select>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="field">
-        <label class="label">{{ $t('game.numberAnswers') }}</label>
-        <div class="control">
-          <div class="select">
-            <select v-model="numberOfPossibleAnswers">
-              <option v-for="num in numbersOfPossibleAnswers" :key="num">
-                {{ num }}
-              </option>
-            </select>
+        <div class="field">
+          <label class="label">{{ $t('game.numberAnswers') }}</label>
+          <div class="control">
+            <div class="select">
+              <select v-model="numberOfPossibleAnswers">
+                <option v-for="num in numbersOfPossibleAnswers" :key="num">
+                  {{ num }}
+                </option>
+              </select>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="field">
-        <div class="control">
-          <label class="checkbox">
-            <input type="checkbox" v-model="difficult" />
-            {{ $t('game.difficult') }}
-          </label>
+        <div class="field">
+          <div class="control">
+            <label class="checkbox">
+              <input type="checkbox" v-model="difficult" />
+              {{ $t('game.difficult') }}
+            </label>
+          </div>
         </div>
-      </div>
-      <p v-if="gameModeSong">{{ $t('game.dontLook') }}</p>
+        <p v-if="gameModeSong"><strong>{{ $t('game.dontLook') }}</strong></p>
 
-      <div class="control has-text-centered mt-5">
-        <button class="button is-link is-medium">{{ $t('game.start') }}</button>
-      </div>
-    </form>
-  </base-card>
-  <section v-else-if="isLoading">
-    <base-card :mode="{ video: gameModeSong }">
-      <h3>{{ $t('game.currentQuestion', {num: currentRound, total: numberOfQuestions}) }}</h3>
-      <div class="has-text-centered">
-        <base-spinner></base-spinner>
-      </div>
+        <div class="control has-text-centered mt-5">
+          <button class="button is-link is-medium">{{ $t('game.start') }}</button>
+        </div>
+      </form>
     </base-card>
-  </section>
+    <section v-else-if="isLoading">
+      <base-card :mode="{ video: gameModeSong }">
+        <h3>{{ $t('game.currentQuestion', {num: currentRound, total: numberOfQuestions}) }}</h3>
+        <div class="has-text-centered">
+          <base-spinner></base-spinner>
+        </div>
+      </base-card>
+    </section>
 
-  <section v-else-if="!gameEnded">
-    <text-question
-      v-if="gameModeText"
-      :currentRound="currentRound"
-      :numberOfQuestions="numberOfQuestions"
-      :hasAnswered="hasAnswered"
-      :currentQuestion="currentQuestion"
-    ></text-question>
-    <song-question
-      v-else
-      :currentRound="currentRound"
-      :numberOfQuestions="numberOfQuestions"
-      :hasAnswered="hasAnswered"
-      :currentQuestion="currentQuestion"
-      :hideVideo="hideVideo"
-    ></song-question>
+    <section v-else-if="!gameEnded">
+      <text-question
+        v-if="gameModeText"
+        :currentRound="currentRound"
+        :numberOfQuestions="numberOfQuestions"
+        :hasAnswered="hasAnswered"
+        :currentQuestion="currentQuestion"
+      ></text-question>
+      <song-question
+        v-else
+        :currentRound="currentRound"
+        :numberOfQuestions="numberOfQuestions"
+        :hasAnswered="hasAnswered"
+        :currentQuestion="currentQuestion"
+        :hideVideo="hideVideo"
+      ></song-question>
 
-    <answer-buttons
-      :choices="currentQuestion.choices"
-      :correctAnswer="currentQuestion.correctAnswer"
-      :hasAnswered="hasAnswered"
-      :errorReportButton="gameModeSong"
-      :autoScroll="gameModeSong"
-      @answer-picked="checkAnswer($event)"
-      @error-reported="reportError()"
-    >
-    </answer-buttons>
+      <answer-buttons
+        :choices="currentQuestion.choices"
+        :correctAnswer="currentQuestion.correctAnswer"
+        :hasAnswered="hasAnswered"
+        :errorReportButton="gameModeSong"
+        :autoScroll="gameModeSong"
+        @answer-picked="checkAnswer($event)"
+        @error-reported="reportError()"
+      >
+      </answer-buttons>
 
-    <results-card
-      :hasAnswered="hasAnswered"
-      :correctAnswer="currentQuestion.correctAnswer"
-      :correctlyAnswered="correctlyAnswered"
-      :chosenAnswer="chosenAnswer"
-      @next="nextRound"
-      ref="results"
-    ></results-card>
-  </section>
-  <section v-else>
-    <score-card
-      :gameModeText="gameModeText"
-      :score="score"
-      :numberOfQuestions="numberOfQuestions"
-      @play-again="playAgain"
-    >
-    </score-card>
-  </section>
+      <results-card
+        :hasAnswered="hasAnswered"
+        :correctAnswer="currentQuestion.correctAnswer"
+        :correctlyAnswered="correctlyAnswered"
+        :chosenAnswer="chosenAnswer"
+        @next="nextRound"
+        ref="results"
+      ></results-card>
+    </section>
+    <section v-else>
+      <score-card
+        :gameModeText="gameModeText"
+        :score="score"
+        :numberOfQuestions="numberOfQuestions"
+        @play-again="playAgain"
+      >
+      </score-card>
+    </section>
+  </transition>
 
   <pinned-message
     :show="showError"
@@ -110,11 +112,13 @@
 
 <script>
 import axios from "axios";
+import { defineAsyncComponent } from 'vue';
+
 import AnswerButtons from "./AnswerButtons";
 import ResultsCard from "./ResultsCard";
-import ScoreCard from "./ScoreCard";
 import TextQuestion from "./TextQuestion";
 import SongQuestion from "./SongQuestion";
+const ScoreCard = defineAsyncComponent(() => import('./ScoreCard.vue'));
 
 export default {
   components: {
@@ -234,9 +238,32 @@ export default {
     },
     prepareToExit() {
       if (this.gameStarted && !this.gameEnded) {
-        return window.confirm("Are you sure you want to leave the quiz?");
+        return window.confirm(this.$t('game.areYouSure'));
       }
     },
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.slide-enter-from {
+  transform: translateY(20px);
+  opacity: 0;
+}
+
+.slide-leave-to {
+  transform: translateY(-12px);
+  opacity: 0;
+}
+
+.slide-enter-to,
+.slide-leave-from {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.slide-leave-active,
+.slide-enter-active {
+  transition: all .2s;
+}
+</style>

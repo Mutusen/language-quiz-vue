@@ -1,10 +1,7 @@
 <template>
   <the-header></the-header>
   <main class="container">
-    <div class="has-text-centered" v-if="loading">
-      <base-spinner></base-spinner>
-    </div>
-    <router-view v-else></router-view>
+    <router-view></router-view>
   </main>
   <the-footer></the-footer>
 </template>

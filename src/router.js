@@ -1,10 +1,11 @@
 import { createWebHistory, createRouter } from "vue-router";
 
-import AboutPage from './pages/AboutPage.vue';
-import MainPage from './pages/MainPage.vue';
-import ContactPage from './pages/ContactPage.vue';
-import PlayPage from './pages/PlayPage.vue';
-import NotFound from './pages/NotFound.vue';
+import MainPage from './pages/MainPage';
+import PlayPage from './pages/PlayPage';
+
+const AboutPage = () => import('./pages/AboutPage');
+const ContactPage = () => import('./pages/ContactPage');
+const NotFound = () => import('./pages/NotFound');
 
 const routes = [
   {

@@ -1,14 +1,15 @@
-import { createApp } from 'vue';
+import { createApp, defineAsyncComponent } from 'vue';
 import App from './App.vue';
 import router from './router.js';
 import store from './store.js';
-import i18n from './i18n.js';
+import { i18n, languageNames } from './i18n.js';
 import { API } from './api'
 import '../node_modules/bulma/bulma.sass';
 
 import BaseSpinner from './components/ui/BaseSpinner';
 import BaseCard from './components/ui/BaseCard';
-import PinnedMessage from './components/ui/PinnedMessage';
+
+const PinnedMessage = defineAsyncComponent(() => import('./components/ui/PinnedMessage'));
 
 const app = createApp(App);
 
@@ -21,10 +22,6 @@ app.component('base-card', BaseCard);
 app.component('pinned-message', PinnedMessage);
 
 app.config.globalProperties.API = API;
-app.config.globalProperties.languageNames = {
-    en: 'English',
-    eo: 'Esperanto',
-    fr: 'Français',
-};
+app.config.globalProperties.languageNames = languageNames;
 
 app.mount('#app')

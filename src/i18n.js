@@ -9,6 +9,11 @@ const messages = {
     eo,
 };
 
+const languageNames = {
+    en: 'English',
+    eo: 'Esperanto',
+    fr: 'Français',
+};
 
 const i18n = createI18n({
     locale: 'en',
@@ -16,4 +21,4 @@ const i18n = createI18n({
     messages,
 });
 
-export default i18n;
+export { i18n, languageNames };

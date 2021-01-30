@@ -25,6 +25,7 @@ export default {
     "title": "Contact"
   },
   "game": {
+    "areYouSure": "Êtes-vous sûr(e) de vouloir interrompre le quiz ?",
     "artist": "Artiste :",
     "brokenVideo": "La vidéo ne marche pas",
     "correct": "Bonne réponse !",

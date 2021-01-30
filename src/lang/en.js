@@ -56,6 +56,7 @@ export default {
     yourScore: 'Your score:',
     playAgain: 'Play again',
     mainPage: 'Main page',
+    areYouSure: 'Are you sure you want to leave the quiz?',
   },
   languages: {
     af: 'Afrikaans',

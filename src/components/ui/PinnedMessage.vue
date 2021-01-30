@@ -48,6 +48,8 @@ export default {
   position: fixed;
   top: 1rem;
   right: 1rem;
+  z-index: 1000;
+  box-shadow: 1px 1px 6px rgba(0, 0, 0, .3);
 }
 
 .slide-enter-from,

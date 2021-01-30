@@ -25,6 +25,7 @@ export default {
     "title": "Kontakto"
   },
   "game": {
+    "areYouSure": "Ĉu vi certe volas eliri el la kvizo?",
     "artist": "Artisto:",
     "brokenVideo": "La video ne funkcias",
     "correct": "Ĝuste!",
