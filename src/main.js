@@ -6,10 +6,10 @@ import { i18n, languageNames } from './i18n.js';
 import { API } from './api'
 import '../node_modules/bulma/bulma.sass';
 
-import BaseSpinner from './components/ui/BaseSpinner';
-import BaseCard from './components/ui/BaseCard';
+import BaseSpinner from './components/ui/BaseSpinner.vue';
+import BaseCard from './components/ui/BaseCard.vue';
 
-const PinnedMessage = defineAsyncComponent(() => import('./components/ui/PinnedMessage'));
+const PinnedMessage = defineAsyncComponent(() => import('./components/ui/PinnedMessage.vue'));
 
 const app = createApp(App);
 

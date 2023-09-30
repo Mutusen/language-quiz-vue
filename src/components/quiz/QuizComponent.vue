@@ -114,10 +114,10 @@
 import axios from "axios";
 import { defineAsyncComponent } from 'vue';
 
-import AnswerButtons from "./AnswerButtons";
-import ResultsCard from "./ResultsCard";
-import TextQuestion from "./TextQuestion";
-import SongQuestion from "./SongQuestion";
+import AnswerButtons from "./AnswerButtons.vue";
+import ResultsCard from "./ResultsCard.vue";
+import TextQuestion from "./TextQuestion.vue";
+import SongQuestion from "./SongQuestion.vue";
 const ScoreCard = defineAsyncComponent(() => import('./ScoreCard.vue'));
 
 export default {

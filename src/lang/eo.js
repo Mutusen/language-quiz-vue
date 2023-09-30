@@ -144,6 +144,7 @@ export default {
     "tr": "Turka",
     "tt": "Tatara",
     "ty": "Tahitia",
+    "udm": "Udmurta",
     "ug": "Ujgura",
     "uk": "Ukraina",
     "ur": "Urduo",

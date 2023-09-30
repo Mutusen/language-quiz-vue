@@ -152,6 +152,7 @@ export default {
     tr: 'Turkish',
     tt: 'Tatar',
     ty: 'Tahitian',
+    udm: 'Udmurt',
     ug: 'Uyghur',
     uk: 'Ukrainian',
     ur: 'Urdu',

@@ -144,6 +144,7 @@ export default {
     "tr": "Turc",
     "tt": "Tatar",
     "ty": "Tahitien",
+    "udm": "Oudmourte",
     "ug": "Ouïghour",
     "uk": "Ukrainien",
     "ur": "Ourdou",
